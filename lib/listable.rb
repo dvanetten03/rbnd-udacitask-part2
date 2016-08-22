@@ -11,7 +11,7 @@ module Listable
     return value
   end
 
-  def format_date(options{})
+  def format_date(options={})
     due = options[:due] ? Date.parse(options[:due]) : options[:due]
     start_date = Date.parse(options[:start_date]) if options[:start_date]
     end_date = Date.parse(options[:end_date]) if options[:end_date]
@@ -22,6 +22,7 @@ module Listable
     return dates
 
     @due ? @due.strftime("%D") : "No due date"
+  end
 
-    
+
 end
