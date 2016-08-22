@@ -1,12 +1,12 @@
 module UdaciListErrors
   #Error classes go here
-  def InvalidItemTypeError < StandardError
+  class InvalidItemTypeError < StandardError
   end
 
-  def IndexExceedsListSizeError < StandardError
+  class IndexExceedsListSizeError < StandardError
   end
 
-  def InvalidPriorityValueError < StandardError
+  class InvalidPriorityValueError < StandardError
   end
 
 end
