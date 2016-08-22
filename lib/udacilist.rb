@@ -9,10 +9,10 @@ class UdaciList
   def add(type, description, options={})
     type = type.downcase
     priority = options[:priority]
-    if !type =~ /todo|event|link/ 
+    unless type =~ /todo|event|link/ 
       raise UdaciListErrors::InvalidItemTypeError, "Sorry, that is not one of the list types, try again, or create a new list type!"
     end
-    unless priority == "high" || priority == "medium" || priority == "low" || !priority
+    unless priority =~ /high|medium|low/ || !priority
       raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
     end
     @items.push TodoItem.new(description, options) if type == "todo"
