@@ -7,13 +7,6 @@ class EventItem
     @start_date = Chronic.parse(options[:start_date]) if options[:start_date]
     @end_date = Chronic.parse(options[:end_date]) if options[:end_date]
   end
-  
-  # def format_date
-  #   dates = @start_date.strftime("%D") if @start_date
-  #   dates << " -- " + @end_date.strftime("%D") if @end_date
-  #   dates = "N/A" if !dates
-  #   return dates
-  # end
 
   def type
     "event"
