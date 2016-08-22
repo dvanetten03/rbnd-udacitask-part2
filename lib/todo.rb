@@ -11,7 +11,9 @@ class TodoItem
   # def format_date
   #   @due ? @due.strftime("%D") : "No due date"
   # end
-
+  def type
+    "todo"
+  end
 
   def details
     format_description(@description) + "due: " +

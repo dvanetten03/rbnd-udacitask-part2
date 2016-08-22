@@ -14,7 +14,11 @@ class EventItem
   #   dates = "N/A" if !dates
   #   return dates
   # end
-  
+
+  def type
+    "event"
+  end
+
   def details
     format_description(@description) + "event dates: " + format_date
   end
