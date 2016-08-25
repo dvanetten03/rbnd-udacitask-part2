@@ -8,16 +8,13 @@ class UdaciList
 
   def add(type, description, options={})
     type = type.downcase
-    priority = options[:priority]
-    unless type =~ /todo|event|link/ 
-      raise UdaciListErrors::InvalidItemTypeError, "Sorry, that is not one of the list types, try again, or create a new list type!"
-    end
-    unless priority =~ /high|medium|low/ || !priority
-      raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
-    end
-    @items.push TodoItem.new(type, description, options) if type == "todo"
-    @items.push EventItem.new(type, description, options) if type == "event"
-    @items.push LinkItem.new(type, description, options) if type == "link"
+      if type =~ /todo|event|link/
+        @items.push TodoItem.new(type, description, options) if type == "todo"
+        @items.push EventItem.new(type, description, options) if type == "event"
+        @items.push LinkItem.new(type, description, options) if type == "link" 
+      else
+        raise UdaciListErrors::InvalidItemTypeError, "Sorry, that is not one of the list types, try again, or create a new list type!"
+      end
   end
 
   def delete(index)
@@ -27,19 +24,26 @@ class UdaciList
     @items.delete_at(index - 1)
   end
 
-  # def filter(type)
-  #   filtered_item = items_by_type(type)
-  #   filtered_item.each_with_index do |item, position|
-  #     puts "#{position + 1} #{item_details}"
+  # def priority(index, priority)
+  #   unless priority =~ /high|medium|low/ || !priority
+  #     raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
   #   end
-  #   if filtered_item.length == 0
-  #     puts "There are no '#{type}' items! "
-  #   end
+  #   @items[index - 1].priority = priority
   # end
 
-  # def items_by_type(type)
-  #    @items.select {|i| i.type == type}
-  # end
+  def filter(type)
+    filtered_item = items_by_type(type)
+    filtered_item.each_with_index do |item, position|
+      puts "#{position + 1} #{item_details}"
+    end
+    if filtered_item.length == 0
+      puts "There are no '#{type}' items! "
+    end
+  end
+
+  def items_by_type(type)
+     @items.select {|i| i.type == type}
+  end
 
   def all
     rows = []

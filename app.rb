@@ -43,5 +43,5 @@ new_list.add("todo", "Hack some portals", priority: "super high") # throws an In
 new_list.all
 
 # DEMO FILTER BY ITEM TYPE
-------------------------
-new_list.filter("event")
+# ------------------------
+# new_list.filter("event")

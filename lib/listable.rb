@@ -9,6 +9,10 @@ module Listable
     value = " ⇩".colorize(:blue) if priority == "low"
     value = "" if !priority
     return value
+    if priority =~ /high|medium|low/ || !priority 
+    raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
+  end
+    
   end
 
   def format_date(options={})
@@ -20,9 +24,5 @@ module Listable
     else
       @due ? @due.strftime("%D") : "No due date"
     end
-  end
-
-  def complete
-    @completed_date = Time.now
   end
 end
