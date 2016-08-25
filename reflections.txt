@@ -1,13 +1,15 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+The gem of my choice was Terminal Table. I used it to make a table of the lists.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) I used Terminal Table to add additional changes to the formatting of the lists including padding the list and changing the default borders. 
+  b) 
 
 # REFLECTIONS
 # -------------------------------------------------------
-1. How long did you spend working on this project?
-2. What was the most rewarding challenge you conquered?
-3. What two additional features did you build? Why?
-4. Where do you still have room to grow?
+1. How long did you spend working on this project?  I spent 2 days working on this project.
+2. What was the most rewarding challenge you conquered?  The most rewarding challenge was making the filter work.
+3. What two additional features did you build? Why? I used Terminal Table to 'pretty' up the lists, because using terminal is fairly vanilla and I wanted to spice my project up a bit.
+4. Where do you still have room to grow?  I would like to be quicker at solving the error messages.

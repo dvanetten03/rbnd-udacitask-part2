@@ -15,24 +15,39 @@ class UdaciList
     unless priority =~ /high|medium|low/ || !priority
       raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
     end
-    @items.push TodoItem.new(description, options) if type == "todo"
-    @items.push EventItem.new(description, options) if type == "event"
-    @items.push LinkItem.new(description, options) if type == "link"
+    @items.push TodoItem.new(type, description, options) if type == "todo"
+    @items.push EventItem.new(type, description, options) if type == "event"
+    @items.push LinkItem.new(type, description, options) if type == "link"
   end
 
   def delete(index)
-    if index >=items.count
+    if index >= items.count
       raise UdaciListErrors::IndexExceedsListSizeError, "You don't have that many items on the list"
     end
     @items.delete_at(index - 1)
   end
 
+  # def filter(type)
+  #   filtered_item = items_by_type(type)
+  #   filtered_item.each_with_index do |item, position|
+  #     puts "#{position + 1} #{item_details}"
+  #   end
+  #   if filtered_item.length == 0
+  #     puts "There are no '#{type}' items! "
+  #   end
+  # end
+
+  # def items_by_type(type)
+  #    @items.select {|i| i.type == type}
+  # end
+
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    rows = []
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      rows << [position+1, item.details]
     end
+    table = Terminal::Table.new :title => @title, :rows => rows, headings: %w(Id Item)
+    table.style = {:padding_left => 3, :border_x => "=", :border_i => "x"}
+    puts table
   end
 end

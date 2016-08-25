@@ -21,4 +21,8 @@ module Listable
       @due ? @due.strftime("%D") : "No due date"
     end
   end
+
+  def complete
+    @completed_date = Time.now
+  end
 end

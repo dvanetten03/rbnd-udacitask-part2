@@ -1,15 +1,14 @@
 class TodoItem
   include Listable
-  attr_reader :description, :due, :priority
+  attr_reader :description, :due, :priority, :type
+  attr_accessor :completed
 
-  def initialize(description, options={})
+  def initialize(type, description, options={})
+    @type = "todo"
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
+    @completed = false
     @priority = options[:priority]
-  end
-  
-  def type
-    "todo"
   end
 
   def details
