@@ -8,28 +8,25 @@ class UdaciList
 
   def add(type, description, options={})
     type = type.downcase
-      if type =~ /todo|event|link/
+      raise UdaciListErrors::InvalidItemTypeError, "Sorry, that is not one of the list types, try again, or create a new list type!" unless type =~ /todo|event|link/
         @items.push TodoItem.new(type, description, options) if type == "todo"
         @items.push EventItem.new(type, description, options) if type == "event"
         @items.push LinkItem.new(type, description, options) if type == "link" 
-      else
-        raise UdaciListErrors::InvalidItemTypeError, "Sorry, that is not one of the list types, try again, or create a new list type!"
-      end
   end
+ 
 
   def delete(index)
-    if index >= items.count
-      raise UdaciListErrors::IndexExceedsListSizeError, "You don't have that many items on the list"
-    end
+    raise UdaciListErrors::IndexExceedsListSizeError, "You don't have that many items on the list" if index >= items.count
+  
     @items.delete_at(index - 1)
   end
 
-  # def priority(index, priority)
-  #   unless priority =~ /high|medium|low/ || !priority
-  #     raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
-  #   end
-  #   @items[index - 1].priority = priority
-  # end
+  def priority(index, priority)
+    unless priority =~ /high|medium|low/ || !priority
+      raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
+    end
+    @items[index - 1].priority = priority
+  end
 
   def filter(type)
     filtered_item = items_by_type(type)
