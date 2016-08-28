@@ -1,7 +1,6 @@
 require 'chronic'
 require 'colorize'
 require 'terminal-table'
-# require 'date'
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
@@ -17,7 +16,7 @@ list.add("event", "Birthday Party", start_date: "2016-05-08")
 list.add("event", "Vacation", start_date: "2016-05-28", end_date: "2016-05-31")
 list.add("link", "https://github.com", site_name: "GitHub Homepage")
 list.all
-list.delete(3)
+list.delete(1)
 list.all
 
 # SHOULD CREATE AN UNTITLED LIST AND ADD ITEMS TO IT
@@ -36,7 +35,7 @@ new_list.add("link", "http://ruby-doc.org")
 # ----------------------------
 # new_list.add("image", "http://ruby-doc.org") # Throws InvalidItemType error
 # new_list.delete(9) # Throws an IndexExceedsListSize error
-new_list.add("todo", "Hack some portals", priority: "super high") # throws an InvalidPriorityValue error
+# new_list.add("todo", "Hack some portals", priority: "super high") # throws an InvalidPriorityValue error
 
 # DISPLAY UNTITLED LIST
 # ---------------------

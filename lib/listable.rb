@@ -9,14 +9,10 @@ module Listable
     value = " ⇩".colorize(:blue) if priority == "low"
     value = "" if !priority
     return value
-    if priority =~ /high|medium|low/ || !priority 
-    raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
-  end
+  end  
     
-  end
-
   def format_date(options={})
-    if self.type == "event"
+    if @type == "event"
       dates = start_date.strftime("%D") if start_date
       dates << " -- " + end_date.strftime("%D") if end_date
       dates = "N/A" if !dates

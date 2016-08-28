@@ -1,29 +1,26 @@
 class TodoItem
   include Listable
-  attr_reader :description, :due, :type, :priority
-  
+  attr_reader :description, :due, :priority
 
-  def initialize(type, description, options={})
-    @type = "todo"
+  def initialize(description, options={})
     @description = description
-    # @priority = priority
+    @priority = priority
+    @type = "todo"
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
-    # set_priority(options[:priority])
+    if options[:priority] =~ /high|medium|low/ || !priority
+      @priority = (options[:priority])
+    else
+      raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
+    end  
   end
 
   def details
     format_description(@description) + "due: " +
-    format_date +
-    format_priority(@priority)
+    format_date + " priority: " +
+    format_priority(@priority) + " item_type: " + @type
   end
 
-  # def priority(priority)
-  #   set_priority(priority)
-  # end
-
-  # private
-  # def set_priority(priority)
-  #   raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!" unless @priority = /"high"|"medium"|"low"/ || ""
-  #   @priority = priority
+  # def change_due_date date
+  #   @due = Chronic.parse(date)
   # end
 end
