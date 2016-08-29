@@ -10,14 +10,14 @@ class TodoItem
     if options[:priority] =~ /high|medium|low/ || !priority
       @priority = (options[:priority])
     else
-      raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!"
+      raise UdaciListErrors::InvalidPriorityValueError, "Please change priority to 'high', 'medium' or 'low'!".bold.red
     end  
   end
 
   def details
-    format_description(@description) + "due: " +
-    format_date + " priority: " +
-    format_priority(@priority) + " item_type: " + @type
+    format_description(@description).white + "   due: ".blink.magenta +
+    format_date+ "    priority: " +
+    format_priority(@priority) + "    item_type: ".blue + @type
   end
 
   # def change_due_date date

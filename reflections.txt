@@ -5,11 +5,11 @@ The gem of my choice was Terminal Table. I used it to make a table of the lists.
 
 2. Describe the 2 features you added to the project.
   a) I used Terminal Table to add additional changes to the formatting of the lists including padding the list and changing the default borders. 
-  b) 
+  b) I used the colorize gem to add bold, underline and blinking features to the tables.
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?  I spent 3.5 days working on this project.
 2. What was the most rewarding challenge you conquered?  The most rewarding challenge was making the filter work.
-3. What two additional features did you build? Why? I used Terminal Table to 'pretty' up the lists, because using terminal is fairly vanilla and I wanted to spice my project up a bit.
-4. Where do you still have room to grow?  I would like to be quicker at solving the error messages.
+3. What two additional features did you build? Why? I used Terminal Table to 'pretty' up the lists, because using terminal is fairly vanilla and I wanted to spice my project up a bit. And I used the colorize gem to put additional attributes to the table, so the 'due' dates were blinking to show there were due dates and to make the text on the page 'pop' out to the reader so that terminal wasn't so generic.
+4. Where do you still have room to grow?  I would like to be quicker at solving the error messages and not get frustrated when I can't solve something on the first pass. I would also like to remember to commit to git on a more regular basis and be able to use the git repos to return my code to its previously working mode.

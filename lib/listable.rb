@@ -13,12 +13,12 @@ module Listable
     
   def format_date(options={})
     if @type == "event"
-      dates = start_date.strftime("%D") if start_date
-      dates << " -- " + end_date.strftime("%D") if end_date
-      dates = "N/A" if !dates
+      dates = start_date.strftime("%D").colorize(:green) if start_date
+      dates << " -- " + end_date.strftime("%D").colorize(:white) if end_date
+      dates = "N/A".colorize(:yellow) if !dates
       return dates
     else
-      @due ? @due.strftime("%D") : "No due date"
+      @due ? @due.strftime("%D").colorize(:red) : "None"
     end
   end
 end

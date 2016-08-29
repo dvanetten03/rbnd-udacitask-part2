@@ -10,6 +10,6 @@ class EventItem
   end
 
   def details
-    format_description(@description) + "event dates: " + format_date + " item_type: " + @type
+    format_description(@description).white + "   event dates: ".bold.magenta + format_date + "    item_type: ".blue + @type
   end
 end

@@ -13,6 +13,6 @@ class LinkItem
   end
 
   def details
-    format_description(@description) + "site name: " + format_name + " item_type: " + @type
+    format_description(@description).white + "   site name: ".bold.magenta + format_name.underline + "    item_type: ".blue + @type
   end
 end
