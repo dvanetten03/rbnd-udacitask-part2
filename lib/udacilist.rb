@@ -36,6 +36,7 @@ class UdaciList
     end
     unless filtered.empty? 
       puts
+      puts
       puts "Filtered by #{type}"
       puts '-------------------'
       filtered.each_with_index do |item, position|
